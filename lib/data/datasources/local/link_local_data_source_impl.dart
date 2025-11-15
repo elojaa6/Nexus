@@ -26,4 +26,17 @@ class LinkLocalDataSourceImpl implements LinkLocalDataSource {
   Future<void> updateLink(LinksCompanion link) async {
     await (appDatabase.update(appDatabase.links)..where((tbl) => tbl.id.equals(link.id.value))).write(link);
   }
+
+  @override
+  Future<void> updateLinksOrder(List<LinksCompanion> links) async {
+    await appDatabase.batch((batch) {
+      for (final link in links) {
+        batch.update(
+          appDatabase.links,
+          link,
+          where: (tbl) => tbl.id.equals(link.id.value),
+        );
+      }
+    });
+  }
 }

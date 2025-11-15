@@ -15,17 +15,12 @@ class QrCodeDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           gradient: const LinearGradient(
-            colors: [
-              AppColors.gradientStart,
-              AppColors.gradientEnd,
-            ],
+            colors: [AppColors.gradientStart, AppColors.gradientEnd],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -41,10 +36,7 @@ class QrCodeDialog extends StatelessWidget {
               foregroundColor: AppColors.white,
             ),
             const SizedBox(height: 24),
-            Text(
-              link.title,
-              style: AppTextStyles.title,
-            ),
+            Text(link.title, style: AppTextStyles.title),
             const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +57,9 @@ class QrCodeDialog extends StatelessWidget {
                 const SizedBox(width: 16),
                 TextButton(
                   onPressed: () {
-                    context.read<LinkBloc>().add(LinkEvent.deleteLink(id: link.id!));
+                    context.read<LinkBloc>().add(
+                      LinkEvent.deleteLink(link.id!),
+                    );
                     Navigator.of(context).pop();
                   },
                   child: const Text('Delete'),

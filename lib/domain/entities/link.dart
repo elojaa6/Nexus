@@ -8,5 +8,6 @@ class Link with _$Link {
     int? id,
     required String title,
     required String url,
+    required int order,
   }) = _Link;
 }

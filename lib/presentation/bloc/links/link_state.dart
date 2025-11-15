@@ -4,7 +4,7 @@ import 'package:nexo/domain/entities/link.dart';
 part 'link_state.freezed.dart';
 
 @freezed
-class LinkState with _$LinkState {
+abstract class LinkState with _$LinkState {
   const factory LinkState.initial() = _Initial;
   const factory LinkState.loading() = _Loading;
   const factory LinkState.loaded({required List<Link> links}) = _Loaded;

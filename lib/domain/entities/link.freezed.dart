@@ -19,6 +19,7 @@ mixin _$Link {
   int? get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get url => throw _privateConstructorUsedError;
+  int get order => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LinkCopyWith<Link> get copyWith => throw _privateConstructorUsedError;
@@ -29,7 +30,7 @@ abstract class $LinkCopyWith<$Res> {
   factory $LinkCopyWith(Link value, $Res Function(Link) then) =
       _$LinkCopyWithImpl<$Res, Link>;
   @useResult
-  $Res call({int? id, String title, String url});
+  $Res call({int? id, String title, String url, int order});
 }
 
 /// @nodoc
@@ -48,6 +49,7 @@ class _$LinkCopyWithImpl<$Res, $Val extends Link>
     Object? id = freezed,
     Object? title = null,
     Object? url = null,
+    Object? order = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -62,6 +64,10 @@ class _$LinkCopyWithImpl<$Res, $Val extends Link>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -73,7 +79,7 @@ abstract class _$$LinkImplCopyWith<$Res> implements $LinkCopyWith<$Res> {
       __$$LinkImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String title, String url});
+  $Res call({int? id, String title, String url, int order});
 }
 
 /// @nodoc
@@ -89,6 +95,7 @@ class __$$LinkImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? title = null,
     Object? url = null,
+    Object? order = null,
   }) {
     return _then(_$LinkImpl(
       id: freezed == id
@@ -103,6 +110,10 @@ class __$$LinkImplCopyWithImpl<$Res>
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
+      order: null == order
+          ? _value.order
+          : order // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -110,7 +121,8 @@ class __$$LinkImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LinkImpl implements _Link {
-  const _$LinkImpl({this.id, required this.title, required this.url});
+  const _$LinkImpl(
+      {this.id, required this.title, required this.url, required this.order});
 
   @override
   final int? id;
@@ -118,10 +130,12 @@ class _$LinkImpl implements _Link {
   final String title;
   @override
   final String url;
+  @override
+  final int order;
 
   @override
   String toString() {
-    return 'Link(id: $id, title: $title, url: $url)';
+    return 'Link(id: $id, title: $title, url: $url, order: $order)';
   }
 
   @override
@@ -131,11 +145,12 @@ class _$LinkImpl implements _Link {
             other is _$LinkImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.order, order) || other.order == order));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, title, url);
+  int get hashCode => Object.hash(runtimeType, id, title, url, order);
 
   @JsonKey(ignore: true)
   @override
@@ -148,7 +163,8 @@ abstract class _Link implements Link {
   const factory _Link(
       {final int? id,
       required final String title,
-      required final String url}) = _$LinkImpl;
+      required final String url,
+      required final int order}) = _$LinkImpl;
 
   @override
   int? get id;
@@ -156,6 +172,8 @@ abstract class _Link implements Link {
   String get title;
   @override
   String get url;
+  @override
+  int get order;
   @override
   @JsonKey(ignore: true)
   _$$LinkImplCopyWith<_$LinkImpl> get copyWith =>

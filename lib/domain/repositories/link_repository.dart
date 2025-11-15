@@ -5,4 +5,5 @@ abstract class LinkRepository {
   Future<void> addLink(Link link);
   Future<void> updateLink(Link link);
   Future<void> deleteLink(int id);
+  Future<void> updateLinkOrder(List<Link> links);
 }

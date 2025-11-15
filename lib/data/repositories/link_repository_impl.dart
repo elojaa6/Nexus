@@ -12,6 +12,7 @@ class LinkRepositoryImpl implements LinkRepository {
   @override
   Future<void> addLink(domain.Link link) async {
     final linkCompanion = db.LinksCompanion(
+      position: Value(link.order),
       title: Value(link.title),
       url: Value(link.url),
     );
@@ -26,7 +27,18 @@ class LinkRepositoryImpl implements LinkRepository {
   @override
   Future<List<domain.Link>> getLinks() async {
     final links = await localDataSource.getLinks();
-    return links.map((e) => domain.Link(id: e.id, title: e.title, url: e.url)).toList();
+    final domainLinks = links
+        .map(
+          (e) => domain.Link(
+            id: e.id,
+            title: e.title,
+            url: e.url,
+            order: e.position,
+          ),
+        )
+        .toList();
+    domainLinks.sort((a, b) => a.order.compareTo(b.order));
+    return domainLinks;
   }
 
   @override
@@ -35,7 +47,22 @@ class LinkRepositoryImpl implements LinkRepository {
       id: Value(link.id!),
       title: Value(link.title),
       url: Value(link.url),
+      position: Value(link.order),
     );
     await localDataSource.updateLink(linkCompanion);
+  }
+
+  @override
+  Future<void> updateLinkOrder(List<domain.Link> links) async {
+    final linkCompanions = links
+        .map(
+          (link) => db.LinksCompanion(
+            id: Value(link.id!),
+            position: Value(link.order),
+          ),
+        )
+        .toList();
+
+    await localDataSource.updateLinksOrder(linkCompanions);
   }
 }

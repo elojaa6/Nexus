@@ -16,8 +16,11 @@ late final GeneratedColumn<String> title = GeneratedColumn<String>('title', alia
 static const VerificationMeta _urlMeta = const VerificationMeta('url');
 @override
 late final GeneratedColumn<String> url = GeneratedColumn<String>('url', aliasedName, false, type: DriftSqlType.string, requiredDuringInsert: true);
+static const VerificationMeta _positionMeta = const VerificationMeta('position');
 @override
-List<GeneratedColumn> get $columns => [id, title, url];
+late final GeneratedColumn<int> position = GeneratedColumn<int>('position', aliasedName, false, type: DriftSqlType.int, requiredDuringInsert: true);
+@override
+List<GeneratedColumn> get $columns => [id, title, url, position];
 @override
 String get aliasedName => _alias ?? actualTableName;
 @override
@@ -36,12 +39,16 @@ if (data.containsKey('url')) {
 context.handle(_urlMeta, url.isAcceptableOrUnknown(data['url']!, _urlMeta));} else if (isInserting) {
 context.missing(_urlMeta);
 }
+if (data.containsKey('position')) {
+context.handle(_positionMeta, position.isAcceptableOrUnknown(data['position']!, _positionMeta));} else if (isInserting) {
+context.missing(_positionMeta);
+}
 return context;
 }
 @override
 Set<GeneratedColumn> get $primaryKey => {id};
 @override Link map(Map<String, dynamic> data, {String? tablePrefix})  {
-final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';return Link(id: attachedDatabase.typeMapping.read(DriftSqlType.int, data['${effectivePrefix}id'])!, title: attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}title'])!, url: attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}url'])!, );
+final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';return Link(id: attachedDatabase.typeMapping.read(DriftSqlType.int, data['${effectivePrefix}id'])!, title: attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}title'])!, url: attachedDatabase.typeMapping.read(DriftSqlType.string, data['${effectivePrefix}url'])!, position: attachedDatabase.typeMapping.read(DriftSqlType.int, data['${effectivePrefix}position'])!, );
 }
 @override
 $LinksTable createAlias(String alias) {
@@ -50,44 +57,48 @@ return $LinksTable(attachedDatabase, alias);}}class Link extends DataClass imple
 final int id;
 final String title;
 final String url;
-const Link({required this.id, required this.title, required this.url});@override
+final int position;
+const Link({required this.id, required this.title, required this.url, required this.position});@override
 Map<String, Expression> toColumns(bool nullToAbsent) {
 final map = <String, Expression> {};map['id'] = Variable<int>(id);
 map['title'] = Variable<String>(title);
 map['url'] = Variable<String>(url);
+map['position'] = Variable<int>(position);
 return map; 
 }
 LinksCompanion toCompanion(bool nullToAbsent) {
-return LinksCompanion(id: Value(id),title: Value(title),url: Value(url),);
+return LinksCompanion(id: Value(id),title: Value(title),url: Value(url),position: Value(position),);
 }
 factory Link.fromJson(Map<String, dynamic> json, {ValueSerializer? serializer}) {
 serializer ??= driftRuntimeOptions.defaultSerializer;
-return Link(id: serializer.fromJson<int>(json['id']),title: serializer.fromJson<String>(json['title']),url: serializer.fromJson<String>(json['url']),);}
+return Link(id: serializer.fromJson<int>(json['id']),title: serializer.fromJson<String>(json['title']),url: serializer.fromJson<String>(json['url']),position: serializer.fromJson<int>(json['position']),);}
 @override Map<String, dynamic> toJson({ValueSerializer? serializer}) {
 serializer ??= driftRuntimeOptions.defaultSerializer;
 return <String, dynamic>{
-'id': serializer.toJson<int>(id),'title': serializer.toJson<String>(title),'url': serializer.toJson<String>(url),};}Link copyWith({int? id,String? title,String? url}) => Link(id: id ?? this.id,title: title ?? this.title,url: url ?? this.url,);Link copyWithCompanion(LinksCompanion data) {
+'id': serializer.toJson<int>(id),'title': serializer.toJson<String>(title),'url': serializer.toJson<String>(url),'position': serializer.toJson<int>(position),};}Link copyWith({int? id,String? title,String? url,int? position}) => Link(id: id ?? this.id,title: title ?? this.title,url: url ?? this.url,position: position ?? this.position,);Link copyWithCompanion(LinksCompanion data) {
 return Link(
-id: data.id.present ? data.id.value : this.id,title: data.title.present ? data.title.value : this.title,url: data.url.present ? data.url.value : this.url,);
+id: data.id.present ? data.id.value : this.id,title: data.title.present ? data.title.value : this.title,url: data.url.present ? data.url.value : this.url,position: data.position.present ? data.position.value : this.position,);
 }
 @override
-String toString() {return (StringBuffer('Link(')..write('id: $id, ')..write('title: $title, ')..write('url: $url')..write(')')).toString();}
+String toString() {return (StringBuffer('Link(')..write('id: $id, ')..write('title: $title, ')..write('url: $url, ')..write('position: $position')..write(')')).toString();}
 @override
- int get hashCode => Object.hash(id, title, url);@override
-bool operator ==(Object other) => identical(this, other) || (other is Link && other.id == this.id && other.title == this.title && other.url == this.url);
+ int get hashCode => Object.hash(id, title, url, position);@override
+bool operator ==(Object other) => identical(this, other) || (other is Link && other.id == this.id && other.title == this.title && other.url == this.url && other.position == this.position);
 }class LinksCompanion extends UpdateCompanion<Link> {
 final Value<int> id;
 final Value<String> title;
 final Value<String> url;
-const LinksCompanion({this.id = const Value.absent(),this.title = const Value.absent(),this.url = const Value.absent(),});
-LinksCompanion.insert({this.id = const Value.absent(),required String title,required String url,}): title = Value(title), url = Value(url);
+final Value<int> position;
+const LinksCompanion({this.id = const Value.absent(),this.title = const Value.absent(),this.url = const Value.absent(),this.position = const Value.absent(),});
+LinksCompanion.insert({this.id = const Value.absent(),required String title,required String url,required int position,}): title = Value(title), url = Value(url), position = Value(position);
 static Insertable<Link> custom({Expression<int>? id, 
 Expression<String>? title, 
 Expression<String>? url, 
+Expression<int>? position, 
 }) {
-return RawValuesInsertable({if (id != null)'id': id,if (title != null)'title': title,if (url != null)'url': url,});
-}LinksCompanion copyWith({Value<int>? id, Value<String>? title, Value<String>? url}) {
-return LinksCompanion(id: id ?? this.id,title: title ?? this.title,url: url ?? this.url,);
+return RawValuesInsertable({if (id != null)'id': id,if (title != null)'title': title,if (url != null)'url': url,if (position != null)'position': position,});
+}LinksCompanion copyWith({Value<int>? id, Value<String>? title, Value<String>? url, Value<int>? position}) {
+return LinksCompanion(id: id ?? this.id,title: title ?? this.title,url: url ?? this.url,position: position ?? this.position,);
 }
 @override
 Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -97,10 +108,12 @@ if (title.present) {
 map['title'] = Variable<String>(title.value);}
 if (url.present) {
 map['url'] = Variable<String>(url.value);}
+if (position.present) {
+map['position'] = Variable<int>(position.value);}
 return map; 
 }
 @override
-String toString() {return (StringBuffer('LinksCompanion(')..write('id: $id, ')..write('title: $title, ')..write('url: $url')..write(')')).toString();}
+String toString() {return (StringBuffer('LinksCompanion(')..write('id: $id, ')..write('title: $title, ')..write('url: $url, ')..write('position: $position')..write(')')).toString();}
 }
 abstract class _$AppDatabase extends GeneratedDatabase{
 _$AppDatabase(QueryExecutor e): super(e);
@@ -111,8 +124,8 @@ Iterable<TableInfo<Table, Object?>> get allTables => allSchemaEntities.whereType
 @override
 List<DatabaseSchemaEntity> get allSchemaEntities => [links];
 }
-typedef $$LinksTableCreateCompanionBuilder = LinksCompanion Function({Value<int> id,required String title,required String url,});
-typedef $$LinksTableUpdateCompanionBuilder = LinksCompanion Function({Value<int> id,Value<String> title,Value<String> url,});
+typedef $$LinksTableCreateCompanionBuilder = LinksCompanion Function({Value<int> id,required String title,required String url,required int position,});
+typedef $$LinksTableUpdateCompanionBuilder = LinksCompanion Function({Value<int> id,Value<String> title,Value<String> url,Value<int> position,});
 class $$LinksTableFilterComposer extends Composer<
         _$AppDatabase,
         $LinksTable> {
@@ -135,6 +148,11 @@ ColumnFilters<String> get title => $composableBuilder(
       
 ColumnFilters<String> get url => $composableBuilder(
       column: $table.url,
+      builder: (column) => 
+      ColumnFilters(column));
+      
+ColumnFilters<int> get position => $composableBuilder(
+      column: $table.position,
       builder: (column) => 
       ColumnFilters(column));
       
@@ -164,6 +182,11 @@ ColumnOrderings<String> get url => $composableBuilder(
       builder: (column) => 
       ColumnOrderings(column));
       
+ColumnOrderings<int> get position => $composableBuilder(
+      column: $table.position,
+      builder: (column) => 
+      ColumnOrderings(column));
+      
         }
       class $$LinksTableAnnotationComposer extends Composer<
         _$AppDatabase,
@@ -187,6 +210,10 @@ GeneratedColumn<String> get url => $composableBuilder(
       column: $table.url,
       builder: (column) => column);
       
+GeneratedColumn<int> get position => $composableBuilder(
+      column: $table.position,
+      builder: (column) => column);
+      
         }
       class $$LinksTableTableManager extends RootTableManager    <_$AppDatabase,
     $LinksTable,
@@ -207,8 +234,8 @@ GeneratedColumn<String> get url => $composableBuilder(
         createFilteringComposer: () => $$LinksTableFilterComposer($db: db,$table:table),
         createOrderingComposer: () => $$LinksTableOrderingComposer($db: db,$table:table),
         createComputedFieldComposer: () => $$LinksTableAnnotationComposer($db: db,$table:table),
-        updateCompanionCallback: ({Value<int> id = const Value.absent(),Value<String> title = const Value.absent(),Value<String> url = const Value.absent(),})=> LinksCompanion(id: id,title: title,url: url,),
-        createCompanionCallback: ({Value<int> id = const Value.absent(),required String title,required String url,})=> LinksCompanion.insert(id: id,title: title,url: url,),
+        updateCompanionCallback: ({Value<int> id = const Value.absent(),Value<String> title = const Value.absent(),Value<String> url = const Value.absent(),Value<int> position = const Value.absent(),})=> LinksCompanion(id: id,title: title,url: url,position: position,),
+        createCompanionCallback: ({Value<int> id = const Value.absent(),required String title,required String url,required int position,})=> LinksCompanion.insert(id: id,title: title,url: url,position: position,),
         withReferenceMapper: (p0) => p0
               .map(
                   (e) =>

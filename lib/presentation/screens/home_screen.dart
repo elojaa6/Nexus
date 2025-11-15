@@ -5,6 +5,7 @@ import 'package:nexo/presentation/bloc/links/link_bloc.dart';
 import 'package:nexo/presentation/bloc/links/link_event.dart';
 import 'package:nexo/presentation/bloc/links/link_state.dart';
 import 'package:nexo/presentation/widgets/add_link_dialog.dart';
+import 'package:nexo/domain/entities/link.dart';
 import 'package:nexo/presentation/widgets/link_card.dart';
 import 'package:nexo/presentation/widgets/qr_code_dialog.dart';
 import 'package:provider/provider.dart';
@@ -43,26 +44,26 @@ class _HomeScreenState extends State<HomeScreen> {
             initial: () => const Center(child: CircularProgressIndicator()),
             loading: () => const Center(child: CircularProgressIndicator()),
             loaded: (links) {
-              return ListView.builder(
+              return ReorderableListView.builder(
                 padding: const EdgeInsets.all(16.0),
                 itemCount: links.length,
                 itemBuilder: (context, index) {
                   final link = links[index];
                   return GestureDetector(
                     key: ValueKey(link.id),
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => BlocProvider.value(
-                          value: BlocProvider.of<LinkBloc>(context),
-                          child: QrCodeDialog(link: link),
-                        ),
-                      );
-                    },
-                    child: LinkCard(
-                      title: link.title,
-                      url: link.url,
-                    ),
+                    onTap: () => _showQrDialog(context, link),
+                    child: LinkCard(title: link.title, url: link.url),
+                  );
+                },
+                onReorder: (oldIndex, newIndex) {
+                  if (oldIndex < newIndex) {
+                    newIndex -= 1;
+                  }
+                  final updatedLinks = List<Link>.from(links);
+                  final item = updatedLinks.removeAt(oldIndex);
+                  updatedLinks.insert(newIndex, item);
+                  context.read<LinkBloc>().add(
+                    LinkEvent.reorderLinks(updatedLinks),
                   );
                 },
               );
@@ -73,13 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (_) => BlocProvider.value(
-              value: BlocProvider.of<LinkBloc>(context),
-              child: const AddLinkDialog(),
-            ),
-          );
+          _showAddLinkDialog(context);
         },
         child: const Icon(Icons.add),
       ),
@@ -103,6 +98,26 @@ class _HomeScreenState extends State<HomeScreen> {
           }).toList(),
         );
       },
+    );
+  }
+
+  void _showQrDialog(BuildContext context, Link link) {
+    showDialog(
+      context: context,
+      builder: (_) => BlocProvider.value(
+        value: BlocProvider.of<LinkBloc>(context),
+        child: QrCodeDialog(link: link),
+      ),
+    );
+  }
+
+  void _showAddLinkDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => BlocProvider.value(
+        value: BlocProvider.of<LinkBloc>(context),
+        child: const AddLinkDialog(),
+      ),
     );
   }
 }

@@ -11,6 +11,7 @@ class Links extends Table {
   IntColumn get id => integer().autoIncrement()();
   TextColumn get title => text()();
   TextColumn get url => text()();
+  IntColumn get position => integer()();
 }
 
 @DriftDatabase(tables: [Links])

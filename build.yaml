@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      # Configuración para Freezed
+      freezed:
+        generate_for:
+          - lib/domain/entities/**.dart
+          - lib/presentation/bloc/links/**.dart
+
+      # Configuración para Injectable
+      injectable_generator:
+        generate_for:
+          - lib/core/di/injection.dart
+
+      # Configuración para Drift
+      drift_dev:
+        generate_for:
+          - lib/data/datasources/local/app_database.dart

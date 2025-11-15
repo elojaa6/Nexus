@@ -22,6 +22,7 @@ mixin _$LinkEvent {
     required TResult Function(String title, String url) addLink,
     required TResult Function(Link link) updateLink,
     required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$LinkEvent {
     TResult? Function(String title, String url)? addLink,
     TResult? Function(Link link)? updateLink,
     TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$LinkEvent {
     TResult Function(String title, String url)? addLink,
     TResult Function(Link link)? updateLink,
     TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$LinkEvent {
     required TResult Function(_AddLink value) addLink,
     required TResult Function(_UpdateLink value) updateLink,
     required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$LinkEvent {
     TResult? Function(_AddLink value)? addLink,
     TResult? Function(_UpdateLink value)? updateLink,
     TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$LinkEvent {
     TResult Function(_AddLink value)? addLink,
     TResult Function(_UpdateLink value)? updateLink,
     TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,6 +133,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     required TResult Function(String title, String url) addLink,
     required TResult Function(Link link) updateLink,
     required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
   }) {
     return loadLinks();
   }
@@ -138,6 +145,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     TResult? Function(String title, String url)? addLink,
     TResult? Function(Link link)? updateLink,
     TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
   }) {
     return loadLinks?.call();
   }
@@ -149,6 +157,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     TResult Function(String title, String url)? addLink,
     TResult Function(Link link)? updateLink,
     TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
     required TResult orElse(),
   }) {
     if (loadLinks != null) {
@@ -164,6 +173,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     required TResult Function(_AddLink value) addLink,
     required TResult Function(_UpdateLink value) updateLink,
     required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
   }) {
     return loadLinks(this);
   }
@@ -175,6 +185,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     TResult? Function(_AddLink value)? addLink,
     TResult? Function(_UpdateLink value)? updateLink,
     TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
   }) {
     return loadLinks?.call(this);
   }
@@ -186,6 +197,7 @@ class _$LoadLinksImpl implements _LoadLinks {
     TResult Function(_AddLink value)? addLink,
     TResult Function(_UpdateLink value)? updateLink,
     TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
     required TResult orElse(),
   }) {
     if (loadLinks != null) {
@@ -223,11 +235,11 @@ class __$$AddLinkImplCopyWithImpl<$Res>
     Object? url = null,
   }) {
     return _then(_$AddLinkImpl(
-      title: null == title
+      null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      url: null == url
+      null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -238,7 +250,7 @@ class __$$AddLinkImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AddLinkImpl implements _AddLink {
-  const _$AddLinkImpl({required this.title, required this.url});
+  const _$AddLinkImpl(this.title, this.url);
 
   @override
   final String title;
@@ -275,6 +287,7 @@ class _$AddLinkImpl implements _AddLink {
     required TResult Function(String title, String url) addLink,
     required TResult Function(Link link) updateLink,
     required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
   }) {
     return addLink(title, url);
   }
@@ -286,6 +299,7 @@ class _$AddLinkImpl implements _AddLink {
     TResult? Function(String title, String url)? addLink,
     TResult? Function(Link link)? updateLink,
     TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
   }) {
     return addLink?.call(title, url);
   }
@@ -297,6 +311,7 @@ class _$AddLinkImpl implements _AddLink {
     TResult Function(String title, String url)? addLink,
     TResult Function(Link link)? updateLink,
     TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
     required TResult orElse(),
   }) {
     if (addLink != null) {
@@ -312,6 +327,7 @@ class _$AddLinkImpl implements _AddLink {
     required TResult Function(_AddLink value) addLink,
     required TResult Function(_UpdateLink value) updateLink,
     required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
   }) {
     return addLink(this);
   }
@@ -323,6 +339,7 @@ class _$AddLinkImpl implements _AddLink {
     TResult? Function(_AddLink value)? addLink,
     TResult? Function(_UpdateLink value)? updateLink,
     TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
   }) {
     return addLink?.call(this);
   }
@@ -334,6 +351,7 @@ class _$AddLinkImpl implements _AddLink {
     TResult Function(_AddLink value)? addLink,
     TResult Function(_UpdateLink value)? updateLink,
     TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
     required TResult orElse(),
   }) {
     if (addLink != null) {
@@ -344,8 +362,7 @@ class _$AddLinkImpl implements _AddLink {
 }
 
 abstract class _AddLink implements LinkEvent {
-  const factory _AddLink(
-      {required final String title, required final String url}) = _$AddLinkImpl;
+  const factory _AddLink(final String title, final String url) = _$AddLinkImpl;
 
   String get title;
   String get url;
@@ -379,7 +396,7 @@ class __$$UpdateLinkImplCopyWithImpl<$Res>
     Object? link = null,
   }) {
     return _then(_$UpdateLinkImpl(
-      link: null == link
+      null == link
           ? _value.link
           : link // ignore: cast_nullable_to_non_nullable
               as Link,
@@ -398,7 +415,7 @@ class __$$UpdateLinkImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UpdateLinkImpl implements _UpdateLink {
-  const _$UpdateLinkImpl({required this.link});
+  const _$UpdateLinkImpl(this.link);
 
   @override
   final Link link;
@@ -432,6 +449,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     required TResult Function(String title, String url) addLink,
     required TResult Function(Link link) updateLink,
     required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
   }) {
     return updateLink(link);
   }
@@ -443,6 +461,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     TResult? Function(String title, String url)? addLink,
     TResult? Function(Link link)? updateLink,
     TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
   }) {
     return updateLink?.call(link);
   }
@@ -454,6 +473,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     TResult Function(String title, String url)? addLink,
     TResult Function(Link link)? updateLink,
     TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
     required TResult orElse(),
   }) {
     if (updateLink != null) {
@@ -469,6 +489,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     required TResult Function(_AddLink value) addLink,
     required TResult Function(_UpdateLink value) updateLink,
     required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
   }) {
     return updateLink(this);
   }
@@ -480,6 +501,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     TResult? Function(_AddLink value)? addLink,
     TResult? Function(_UpdateLink value)? updateLink,
     TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
   }) {
     return updateLink?.call(this);
   }
@@ -491,6 +513,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
     TResult Function(_AddLink value)? addLink,
     TResult Function(_UpdateLink value)? updateLink,
     TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
     required TResult orElse(),
   }) {
     if (updateLink != null) {
@@ -501,7 +524,7 @@ class _$UpdateLinkImpl implements _UpdateLink {
 }
 
 abstract class _UpdateLink implements LinkEvent {
-  const factory _UpdateLink({required final Link link}) = _$UpdateLinkImpl;
+  const factory _UpdateLink(final Link link) = _$UpdateLinkImpl;
 
   Link get link;
   @JsonKey(ignore: true)
@@ -532,7 +555,7 @@ class __$$DeleteLinkImplCopyWithImpl<$Res>
     Object? id = null,
   }) {
     return _then(_$DeleteLinkImpl(
-      id: null == id
+      null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int,
@@ -543,7 +566,7 @@ class __$$DeleteLinkImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$DeleteLinkImpl implements _DeleteLink {
-  const _$DeleteLinkImpl({required this.id});
+  const _$DeleteLinkImpl(this.id);
 
   @override
   final int id;
@@ -577,6 +600,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     required TResult Function(String title, String url) addLink,
     required TResult Function(Link link) updateLink,
     required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
   }) {
     return deleteLink(id);
   }
@@ -588,6 +612,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     TResult? Function(String title, String url)? addLink,
     TResult? Function(Link link)? updateLink,
     TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
   }) {
     return deleteLink?.call(id);
   }
@@ -599,6 +624,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     TResult Function(String title, String url)? addLink,
     TResult Function(Link link)? updateLink,
     TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
     required TResult orElse(),
   }) {
     if (deleteLink != null) {
@@ -614,6 +640,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     required TResult Function(_AddLink value) addLink,
     required TResult Function(_UpdateLink value) updateLink,
     required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
   }) {
     return deleteLink(this);
   }
@@ -625,6 +652,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     TResult? Function(_AddLink value)? addLink,
     TResult? Function(_UpdateLink value)? updateLink,
     TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
   }) {
     return deleteLink?.call(this);
   }
@@ -636,6 +664,7 @@ class _$DeleteLinkImpl implements _DeleteLink {
     TResult Function(_AddLink value)? addLink,
     TResult Function(_UpdateLink value)? updateLink,
     TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
     required TResult orElse(),
   }) {
     if (deleteLink != null) {
@@ -646,10 +675,167 @@ class _$DeleteLinkImpl implements _DeleteLink {
 }
 
 abstract class _DeleteLink implements LinkEvent {
-  const factory _DeleteLink({required final int id}) = _$DeleteLinkImpl;
+  const factory _DeleteLink(final int id) = _$DeleteLinkImpl;
 
   int get id;
   @JsonKey(ignore: true)
   _$$DeleteLinkImplCopyWith<_$DeleteLinkImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ReorderLinksImplCopyWith<$Res> {
+  factory _$$ReorderLinksImplCopyWith(
+          _$ReorderLinksImpl value, $Res Function(_$ReorderLinksImpl) then) =
+      __$$ReorderLinksImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Link> links});
+}
+
+/// @nodoc
+class __$$ReorderLinksImplCopyWithImpl<$Res>
+    extends _$LinkEventCopyWithImpl<$Res, _$ReorderLinksImpl>
+    implements _$$ReorderLinksImplCopyWith<$Res> {
+  __$$ReorderLinksImplCopyWithImpl(
+      _$ReorderLinksImpl _value, $Res Function(_$ReorderLinksImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? links = null,
+  }) {
+    return _then(_$ReorderLinksImpl(
+      null == links
+          ? _value._links
+          : links // ignore: cast_nullable_to_non_nullable
+              as List<Link>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ReorderLinksImpl implements _ReorderLinks {
+  const _$ReorderLinksImpl(final List<Link> links) : _links = links;
+
+  final List<Link> _links;
+  @override
+  List<Link> get links {
+    if (_links is EqualUnmodifiableListView) return _links;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_links);
+  }
+
+  @override
+  String toString() {
+    return 'LinkEvent.reorderLinks(links: $links)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReorderLinksImpl &&
+            const DeepCollectionEquality().equals(other._links, _links));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_links));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReorderLinksImplCopyWith<_$ReorderLinksImpl> get copyWith =>
+      __$$ReorderLinksImplCopyWithImpl<_$ReorderLinksImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadLinks,
+    required TResult Function(String title, String url) addLink,
+    required TResult Function(Link link) updateLink,
+    required TResult Function(int id) deleteLink,
+    required TResult Function(List<Link> links) reorderLinks,
+  }) {
+    return reorderLinks(links);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadLinks,
+    TResult? Function(String title, String url)? addLink,
+    TResult? Function(Link link)? updateLink,
+    TResult? Function(int id)? deleteLink,
+    TResult? Function(List<Link> links)? reorderLinks,
+  }) {
+    return reorderLinks?.call(links);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadLinks,
+    TResult Function(String title, String url)? addLink,
+    TResult Function(Link link)? updateLink,
+    TResult Function(int id)? deleteLink,
+    TResult Function(List<Link> links)? reorderLinks,
+    required TResult orElse(),
+  }) {
+    if (reorderLinks != null) {
+      return reorderLinks(links);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadLinks value) loadLinks,
+    required TResult Function(_AddLink value) addLink,
+    required TResult Function(_UpdateLink value) updateLink,
+    required TResult Function(_DeleteLink value) deleteLink,
+    required TResult Function(_ReorderLinks value) reorderLinks,
+  }) {
+    return reorderLinks(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadLinks value)? loadLinks,
+    TResult? Function(_AddLink value)? addLink,
+    TResult? Function(_UpdateLink value)? updateLink,
+    TResult? Function(_DeleteLink value)? deleteLink,
+    TResult? Function(_ReorderLinks value)? reorderLinks,
+  }) {
+    return reorderLinks?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadLinks value)? loadLinks,
+    TResult Function(_AddLink value)? addLink,
+    TResult Function(_UpdateLink value)? updateLink,
+    TResult Function(_DeleteLink value)? deleteLink,
+    TResult Function(_ReorderLinks value)? reorderLinks,
+    required TResult orElse(),
+  }) {
+    if (reorderLinks != null) {
+      return reorderLinks(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReorderLinks implements LinkEvent {
+  const factory _ReorderLinks(final List<Link> links) = _$ReorderLinksImpl;
+
+  List<Link> get links;
+  @JsonKey(ignore: true)
+  _$$ReorderLinksImplCopyWith<_$ReorderLinksImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

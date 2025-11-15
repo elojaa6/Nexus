@@ -50,17 +50,12 @@ class _AddLinkDialogState extends State<AddLinkDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           gradient: const LinearGradient(
-            colors: [
-              AppColors.gradientStart,
-              AppColors.gradientEnd,
-            ],
+            colors: [AppColors.gradientStart, AppColors.gradientEnd],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -76,16 +71,12 @@ class _AddLinkDialogState extends State<AddLinkDialog> {
             const SizedBox(height: 24),
             TextField(
               controller: _titleController,
-              decoration: const InputDecoration(
-                labelText: 'Title *',
-              ),
+              decoration: const InputDecoration(labelText: 'Title *'),
             ),
             const SizedBox(height: 16),
             TextField(
               controller: _urlController,
-              decoration: const InputDecoration(
-                labelText: 'URL *',
-              ),
+              decoration: const InputDecoration(labelText: 'URL *'),
             ),
             const SizedBox(height: 24),
             Row(
@@ -106,20 +97,20 @@ class _AddLinkDialogState extends State<AddLinkDialog> {
                           ? () {
                               if (isEditing) {
                                 context.read<LinkBloc>().add(
-                                      LinkEvent.updateLink(
-                                        link: widget.link!.copyWith(
-                                          title: _titleController.text,
-                                          url: _urlController.text,
-                                        ),
-                                      ),
-                                    );
+                                  LinkEvent.updateLink(
+                                    widget.link!.copyWith(
+                                      title: _titleController.text,
+                                      url: _urlController.text,
+                                    ),
+                                  ),
+                                );
                               } else {
                                 context.read<LinkBloc>().add(
-                                      LinkEvent.addLink(
-                                        title: _titleController.text,
-                                        url: _urlController.text,
-                                      ),
-                                    );
+                                  LinkEvent.addLink(
+                                    _titleController.text,
+                                    _urlController.text,
+                                  ),
+                                );
                               }
                               Navigator.of(context).pop();
                             }
