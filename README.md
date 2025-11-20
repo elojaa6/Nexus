@@ -3,7 +3,8 @@
 A sleek and modern link management application built with Flutter. This project was developed to practice and showcase advanced UI skills, a premium dark mode aesthetic, and a clean, scalable architecture.
 
 <!-- You can add a GIF or screenshots of your app here -->
-<!-- ![App Demo](link_to_your_demo.gif) -->
+[WhatsApp Image 2025-11-20 at 5 57 26 AM](https://github.com/user-attachments/assets/b3d9fbd5-15e3-4daa-abd1-a378eeda0973)
+
 
 ## ✨ Features
 
@@ -40,7 +41,7 @@ Make sure you have the Flutter SDK installed on your machine. You can find insta
 1.  **Clone the repository:**
 
     ```sh
-    git clone https://github.com/your_username/nexo.git
+    git clone https://github.com/elojaa6/Nexus.git
     cd nexo
     ```
 
