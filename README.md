@@ -3,7 +3,9 @@
 A sleek and modern link management application built with Flutter. This project was developed to practice and showcase advanced UI skills, a premium dark mode aesthetic, and a clean, scalable architecture.
 
 <!-- You can add a GIF or screenshots of your app here -->
-[WhatsApp Image 2025-11-20 at 5 57 26 AM](https://github.com/user-attachments/assets/b3d9fbd5-15e3-4daa-abd1-a378eeda0973)
+<p align="center">
+  <img src="screenshots/1.jpeg" width="300" alt="Nexo App Preview">
+</p>
 
 
 ## ✨ Features
